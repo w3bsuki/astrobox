@@ -1,0 +1,172 @@
+---
+description: 
+globs: 
+---
+# Astrobox Website Cursor Rules
+
+## I. PROJECT SETUP & TECHNOLOGY STACK
+
+- Use Next.js 15.1 with App Router for the framework, ensuring modern features like Turbopack and Partial Prerendering.
+- Use React 19.x for cutting-edge React capabilities.
+- Style with Tailwind CSS 4.0 for responsive, utility-first design.
+- Use shadcn/ui with Radix primitives for polished, accessible UI components.
+- Manage state with zustand 5.0 for lightweight, efficient state handling.
+- Handle authentication with next-auth 6.0 for secure user logins.
+- Use neon.tech/postgres for the database, ensuring scalability.
+- Use drizzle-orm 0.30 for ORM to simplify database interactions.
+- Integrate stripe 13.0 for payment processing, especially for mystery box commerce.
+- Initialize Git for version control and use pnpm for package management.
+- Set up Linting with ESLint and Prettier for code quality.
+
+## II. DEVELOPMENT WORKFLOW & PRINCIPLES
+
+1. **Requirement Analysis:**
+   - Analyze project needs, focusing on astrological features and e-commerce.
+   - Restate requirements to confirm understanding, like dynamic zodiac pages and shop functionality.
+   - Ask clarifying questions if details are missing, such as specific zodiac sign data.
+   - Consider edge cases, like invalid routes or payment failures.
+
+2. **Planning & Design:**
+   - Create a detailed plan before writing code, using pseudocode, Markdown outlines, or component diagrams.
+   - Decompose tasks into smaller, manageable components and functions.
+   - Define data flows and component interactions.
+   - Justify architectural choices, such as server vs. client components and state management approach.
+
+3. **Component-Based Architecture:**
+   - Structure the application using reusable, modular components.
+   - Clearly define each component's responsibility.
+   - Keep components small and focused on a single purpose.
+
+4. **Data Modeling & Validation:**
+   - Define Typescript interfaces or types for all data structures.
+   - Use Zod for runtime data validation, especially for external data sources.
+
+5. **API Integration:**
+   - Use Next.js API Routes for backend logic and data fetching.
+   - Structure API routes logically (e.g., `/api/products`, `/api/users`).
+   - Use `async/await` for asynchronous operations.
+   - Handle API errors gracefully with try/catch blocks and appropriate HTTP status codes.
+
+6. **State Management:**
+   - For simple component state, use React's `useState` and `useReducer` hooks.
+   - For complex, global state, consider Context API, zustand, or Reddit Toolkit, justifying the choice.
+
+7. **Performance Optimization:**
+   - Use Server Components to reduce client-side JavaScript.
+   - Leverage Next.js's automatic code splitting and dynamic imports.
+   - Optimize images with `next/image`.
+   - Lazy load components and images.
+   - Optimize data fetching with caching or libraries like SWR or React Query.
+   - Monitor and minimize bundle size.
+
+8. **Security & Future-Proofing:**
+   - Use neon.tech/postgres with row-level security (RLS) for data protection.
+   - Implement CSP headers for all routes to prevent XSS attacks.
+   - Use Next.js API routes for backend logic and next-auth for authentication.
+
+## III. CODING_STYLE & BEST PRACTICES
+
+1. **Readability:**
+   - Use clear and descriptive variable and function names.
+   - Maintain consistent indentation and formatting with Prettier.
+   - Add comments to explain complex logic or non-obvious code.
+
+2. **Functional Components & `const`:**
+   - Use functional components with React hooks for all UI.
+   - Define functions and components using `const` for immutability.
+
+3. **Typescript:**
+   - Strongly type all parts of the code, including function parameters and props.
+   - Use interfaces or types to define object shapes.
+
+4. **Early Returns:**
+   - Use early returns to simplify conditional logic and improve readability.
+
+5. **DRY Principle:**
+   - Avoid code duplication, like reusing shop card components.
+   - Create reusable utility functions, such as date calculations.
+
+6. **Error Handling:**
+   - Use `try/catch` blocks for error handling, especially in async operations.
+   - Provide user-friendly error messages, like "Payment failed, try again."
+
+7. **Accessibility (a11y):**
+   - Use semantic HTML elements, like `<nav>` for navigation.
+   - Provide `alt` text for images, such as zodiac icons.
+   - Use ARIA attributes for accessibility, like `aria-label` on buttons.
+   - Ensure keyboard navigation works, using `tabindex` and `onKeyDown`.
+   - Test with screen readers if possible for accessibility compliance.
+
+8. **Event Handlers:**
+   - Name event handlers with `handle` prefix, like `handlePurchaseClick`.
+
+## IV. SHADCN/UI & RADIX UI SPECIFIC RULES
+
+1. **shadcn(ui) Preference:**
+   - Use shadcn(ui) components as the default for UI, like buttons or modals.
+   - Customize them extensively with Tailwind CSS to match the design.
+
+2. **Radix UI Justification:**
+   - Use Radix UI only when shadcn(ui) lacks functionality or offers better accessibility.
+   - Document the reason in comments, like "Using Radix for advanced dialog."
+
+3. **Component Customization:**
+   - Heavily customize shadcn(ui) components as needed for the project.
+   - Copy and paste component code for extensive modifications, if required.
+
+4. **Tailwind CSS Syntax:**
+   - Use `class:` syntax for Tailwind CSS, ensuring clean and efficient styling.
+
+## V. REQUIRED FUNCTIONALITY FOR ASTROBOX WEBSITE
+
+- Implement a dynamic zodiac system with static params for zodiac signs, ensuring fast page loads.
+- Build mystery box commerce with Stripe for payments and Neon DB for inventory tracking.
+- Create astrological calculations, including a WebAssembly birth chart generator and moon phase API integration.
+- Achieve performance goals: LCP <1s and CLS <0.1 for a smooth user experience.
+- Ensure security with row-level security (RLS) in Neon and CSP headers for all routes.
+
+## VI. NEXT.JS 15 SPECIFIC CONFIGURATIONS
+
+- Enable Turbopack for dev builds to speed up development.
+- Use Partial Prerendering (PPR) for hybrid pages with `experimental.ppr: 'incremental'`.
+- Default to React Server Components for most components to reduce client-side JavaScript.
+- Implement caching with `revalidate` for ISR, ensuring fresh content.
+- Use Next/Forms for form handling, with auto-prefetching and progressive enhancement.
+
+## VII. PROJECT STRUCTURE
+
+- Organize `src/app` with pages for horoscopes, shop, birth-chart, and login.
+- Use `src/components` for custom astro components like zodiac-wheel and moon-phase, and providers for global state.
+- Place server actions and utility functions in `src/lib`, such as purchase-mystery-box and astrology-calculations.
+- Configure settings in `config/next.config.ts` for performance and optimization.
+
+## VIII. ESSENTIAL CONFIGS
+
+- Configure `next.config.ts` with:
+  - `experimental.ppr: 'incremental'` for Partial Prerendering.
+  - `experimental.turbo: true` for Turbopack.
+  - Image formats: `avif`, `webp` for optimization.
+  - `minimumCacheTTL: 3600` for caching.
+
+## IX. TESTING STRATEGY
+
+- Write unit tests with Vitest and Testing Library for individual components.
+- Add E2E tests with Playwright for key flows, like the purchase mystery box flow.
+- Set up monitoring with Sentry for error tracking and Vercel Analytics for performance insights.
+
+## X. DEPLOYMENT
+
+- Use `vercel.json` with cache control headers: `public, max-age=31536000, immutable` for performance.
+- Enable `experimental.ppr: true` in `vercel.json` for production.
+
+## XI. BEGINNER-FRIENDLY CODE
+
+- Use clear, descriptive variable and function names to make code easy to read.
+- Add detailed comments explaining complex logic, like how astrological calculations work.
+- Follow a component-based architecture for modularity and reusability.
+
+<main className="flex-1 w-full">
+  <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    {children}
+  </div>
+</main>
