@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -36,14 +38,14 @@ const faqCategories = [
     questions: [
       {
         q: 'What can I win from mystery boxes?',
-        a: 'Each box contains a variety of items within its theme (tech, gaming, collectibles, etc.). The possible items and their odds are clearly displayed on each box's page.',
+        a: 'Each box contains a variety of items within its theme (tech, gaming, collectibles, etc.). The possible items and their odds are clearly displayed on each box page.',
       },
       {
         q: 'Are the odds fair?',
-        a: 'Yes, all odds are verified and displayed transparently. Our random number generation system is regularly audited to ensure fairness.',
+        a: 'Yes, all odds are verified and audited by third-party services to ensure complete fairness and transparency.',
       },
       {
-        q: 'Can I get a refund if I don't like my item?',
+        q: 'Can I get a refund if I do not like my item?',
         a: 'All mystery box openings are final and non-refundable, as clearly stated in our Terms of Service. However, you can view all possible items before purchasing.',
       },
     ],
@@ -54,15 +56,15 @@ const faqCategories = [
     questions: [
       {
         q: 'How long does shipping take?',
-        a: 'Shipping times vary by location: 3-5 business days for domestic orders and 7-14 business days for international orders.',
+        a: 'Standard shipping takes 3-5 business days within the US, and 7-14 business days for international orders.',
       },
       {
         q: 'Do you ship internationally?',
-        a: 'Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by location.',
+        a: 'Yes, we ship to most countries worldwide. Shipping costs and times vary by location.',
       },
       {
         q: 'How can I track my order?',
-        a: 'Once your item ships, you'll receive a tracking number via email and can track it through your account dashboard.',
+        a: 'Once your order ships, you will receive a tracking number via email to monitor your delivery.',
       },
     ],
   },
@@ -99,6 +101,24 @@ const faqCategories = [
       {
         q: 'Is my personal information safe?',
         a: 'Yes, we use advanced security measures to protect your data. Read our Privacy Policy for more details.',
+      },
+    ],
+  },
+  {
+    title: 'Returns & Refunds',
+    icon: '🔄',
+    questions: [
+      {
+        q: 'What is your return policy?',
+        a: 'We offer a 30-day return policy for unopened mystery boxes. Digital items are non-refundable.',
+      },
+      {
+        q: 'How do I request a refund?',
+        a: 'Contact our support team through the help center with your order number to initiate a refund.',
+      },
+      {
+        q: 'Are shipping costs refundable?',
+        a: 'Original shipping costs are non-refundable unless the item arrived damaged or incorrect.',
       },
     ],
   },
