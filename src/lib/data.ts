@@ -1,28 +1,52 @@
-import { Star, Moon, Sun } from 'lucide-react';
+import { Star, Moon, Sun, Sparkles, Heart } from 'lucide-react';
 
 export const astrologyFeatures = [
   {
-    title: "Daily Horoscope",
-    description: "Get personalized daily insights based on your zodiac sign to guide your mystery box choices.",
+    title: "Daily Horoscopes",
+    description: "Get personalized zodiac insights based on planetary alignments.",
+    icon: Sparkles,
+    href: "/horoscopes",
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#9370DB]/10"
+  },
+  {
+    title: "Birth Chart Analysis",
+    description: "Discover your unique astrological blueprint and natal chart.",
     icon: Star,
-    color: "bg-purple-500/10",
-    href: "/astrology/daily",
-    image: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?auto=format&fit=crop&q=80&w=1600"
+    href: "/birth-chart",
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#4B0082]/10"
+  },
+  {
+    title: "Compatibility Reports",
+    description: "Explore relationship dynamics through synastry analysis.",
+    icon: Heart,
+    href: "/compatibility",
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#E6E6FA]/10"
   },
   {
     title: "Lunar Phase Timing",
-    description: "Discover the optimal times to open boxes based on the current moon phase and its influence.",
+    description: "Find optimal box opening times based on moon phases.",
     icon: Moon,
-    color: "bg-blue-500/10",
     href: "/astrology/lunar",
-    image: "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?auto=format&fit=crop&q=80&w=1600"
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#9370DB]/10"
   },
   {
     title: "Cosmic Alignment",
-    description: "See how planetary alignments affect your luck and potential rewards in real-time.",
+    description: "See how planetary positions affect your mystery rewards.",
     icon: Sun,
-    color: "bg-yellow-500/10",
     href: "/astrology/alignment",
-    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600"
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#4B0082]/10"
+  },
+  {
+    title: "Planetary Transits",
+    description: "Track celestial influences on your box fortunes.",
+    icon: Star,
+    href: "/astrology/transits",
+    image: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=1600",
+    color: "bg-[#E6E6FA]/10"
   }
 ]; 

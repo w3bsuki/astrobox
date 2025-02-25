@@ -2,134 +2,182 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { Menu } from 'lucide-react';
+import { Menu, Instagram, Facebook, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { href: '/boxes', label: 'Mystery Boxes' },
     { href: '/shop', label: 'Shop' },
     { href: '/astrology', label: 'Astrology' },
     { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
   ];
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 w-full bg-black/95 backdrop-blur-sm border-b border-[#FFD700]/20">
-      <div className="relative w-full h-full max-w-[1920px] mx-auto">
-        {/* Main vertical separator lines - These define our content boundaries */}
-        <div className="absolute inset-y-0 left-[15%] w-px bg-[#FFD700]/20" />
-        <div className="absolute inset-y-0 right-[15%] w-px bg-[#FFD700]/20" />
-        
-        {/* Content container - Exactly 70% width between separators */}
-        <div className="relative mx-auto" style={{ width: "70%", margin: "0 15%" }}>
-          <header className="flex h-16 items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FFD700] to-[#C0C0C0]">
-                  Astrobox
-                </span>
-              </Link>
-            </div>
+    <div className="w-full flex justify-center border-b border-[#9370DB]/10">
+      <header className="w-full flex items-center h-16 justify-between">
+        {/* Left: Logo */}
+        <div className="flex items-center pl-4 sm:pl-6">
+          <Link href="/" className="flex items-center">
+            <span className="text-lg md:text-xl font-light tracking-[0.15em] bg-clip-text text-transparent bg-gradient-to-r from-[#E6E6FA] to-[#9370DB]">
+              ASTROBOX
+            </span>
+          </Link>
+        </div>
 
-            {/* Navigation - Center */}
-            <nav className="hidden md:flex items-center justify-center space-x-8">
-              {navLinks.map((link) => (
+        {/* Center: Navigation */}
+        <nav className="hidden md:flex items-center">
+          <div className="flex space-x-1">
+            {navLinks.map((link, index) => (
+              <div key={link.href} className="flex items-center">
                 <Link
-                  key={link.href}
                   href={link.href}
                   className={cn(
+                    "px-4 py-2",
                     "text-sm font-medium",
-                    "text-[#C0C0C0] hover:text-[#FFD700]",
+                    "text-[#E6E6FA]/80 hover:text-[#9370DB]",
                     "transition-colors duration-200"
                   )}
                 >
                   {link.label}
                 </Link>
-              ))}
-            </nav>
-
-            {/* Right Section - Sign In */}
-            <div className="flex items-center space-x-4">
-              <Button 
-                variant="outline" 
-                asChild 
-                className={cn(
-                  "hidden md:flex h-8",
-                  "border border-[#FFD700]/20",
-                  "bg-transparent",
-                  "text-[#FFD700]",
-                  "hover:border-[#FFD700]/40 hover:bg-[#FFD700]/5",
-                  "transition-colors duration-200"
+                {index < navLinks.length - 1 && (
+                  <div className="h-4 w-[1px] bg-[#9370DB]/10" />
                 )}
-              >
-                <Link href="/login">Sign In</Link>
-              </Button>
+              </div>
+            ))}
+          </div>
+        </nav>
 
-              {/* Mobile Menu */}
-              <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="md:hidden hover:bg-transparent"
+        {/* Right Side */}
+        <div className="flex items-center pr-4 sm:pr-6">
+          {/* Social Media Links */}
+          <div className="hidden md:flex items-center space-x-4 mr-6">
+            <Link
+              href="https://instagram.com/astrobox"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+            >
+              <Instagram className="h-4 w-4" />
+              <span className="sr-only">Instagram</span>
+            </Link>
+            <Link
+              href="https://facebook.com/astrobox"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+            >
+              <Facebook className="h-4 w-4" />
+              <span className="sr-only">Facebook</span>
+            </Link>
+            <Link
+              href="/contact"
+              className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              <span className="sr-only">Contact</span>
+            </Link>
+          </div>
+
+          <div className="hidden md:block relative">
+            <Link href="/login" className="group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap border border-[#9370DB]/20 px-4 py-1.5 text-white font-light tracking-wider text-sm">
+              <ShimmerButton 
+                shimmerColor="#9370DB"
+                background="black"
+                shimmerSize="0.1em"
+                className="absolute inset-0 w-full h-full"
+              />
+              <span className="relative flex items-center gap-2">
+                Sign In
+              </span>
+            </Link>
+          </div>
+
+          {/* Mobile Menu */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden hover:bg-transparent"
+              >
+                <Menu className="h-5 w-5 text-[#9370DB]" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent 
+              side="right" 
+              className={cn(
+                "w-full sm:w-80",
+                "bg-black/95 backdrop-blur-sm",
+                "border-l border-[#9370DB]/20"
+              )}
+            >
+              <nav className="flex flex-col space-y-4 mt-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "text-base font-medium",
+                      "text-[#E6E6FA]/80 hover:text-[#9370DB]",
+                      "transition-colors duration-200"
+                    )}
+                    onClick={() => setIsOpen(false)}
                   >
-                    <Menu className="h-6 w-6 text-[#FFD700]" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent 
-                  side="right" 
-                  className={cn(
-                    "w-[300px] sm:w-[400px]",
-                    "bg-black/95 backdrop-blur-sm",
-                    "border-l border-[#FFD700]/20"
-                  )}
-                >
-                  <nav className="flex flex-col space-y-4 mt-8">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={cn(
-                          "text-lg font-medium",
-                          "text-[#C0C0C0] hover:text-[#FFD700]",
-                          "transition-colors duration-200"
-                        )}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <DropdownMenuSeparator className="bg-[#FFD700]/20" />
-                    <Button 
-                      variant="outline"
-                      asChild 
-                      className={cn(
-                        "w-full",
-                        "border border-[#FFD700]/20",
-                        "bg-transparent",
-                        "text-[#FFD700]",
-                        "hover:border-[#FFD700]/40 hover:bg-[#FFD700]/5",
-                        "transition-colors duration-200"
-                      )}
-                    >
-                      <Link href="/login" onClick={() => setIsOpen(false)}>Sign In</Link>
-                    </Button>
-                  </nav>
-                </SheetContent>
-              </Sheet>
-            </div>
-          </header>
+                    {link.label}
+                  </Link>
+                ))}
+                {/* Social Media Links for Mobile */}
+                <div className="flex items-center space-x-4 pt-4">
+                  <Link
+                    href="https://instagram.com/astrobox"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+                  >
+                    <Instagram className="h-5 w-5" />
+                    <span className="sr-only">Instagram</span>
+                  </Link>
+                  <Link
+                    href="https://facebook.com/astrobox"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+                  >
+                    <Facebook className="h-5 w-5" />
+                    <span className="sr-only">Facebook</span>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="text-[#E6E6FA]/80 hover:text-[#9370DB] transition-colors"
+                  >
+                    <Phone className="h-5 w-5" />
+                    <span className="sr-only">Contact</span>
+                  </Link>
+                </div>
+                <div className="relative mt-4">
+                  <Link href="/login" onClick={() => setIsOpen(false)} className="group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap border border-[#9370DB]/20 px-4 py-1.5 text-white font-light tracking-wider text-sm w-full">
+                    <ShimmerButton 
+                      shimmerColor="#9370DB"
+                      background="black"
+                      shimmerSize="0.1em"
+                      className="absolute inset-0 w-full h-full"
+                    />
+                    <span className="relative flex items-center gap-2">
+                      Sign In
+                    </span>
+                  </Link>
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
-      </div>
+      </header>
     </div>
   );
 } 

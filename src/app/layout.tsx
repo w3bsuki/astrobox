@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/providers/theme-provider';
-import { SiteFooter } from '@/components/layout/site-footer';
+import { Footer } from '@/components/layout/footer';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/layout/navbar';
@@ -30,14 +30,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem={false}
           disableTransitionOnChange
         >
-          <div className="relative min-h-screen flex flex-col overflow-hidden">
-            <Navbar />
-            <main className="flex-1 w-full overflow-hidden">
-              <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                {children}
+          <div className="relative min-h-screen flex flex-col">
+            {/* Main vertical separator lines - hidden on mobile, visible from md up */}
+            <div className="fixed inset-0 pointer-events-none z-50 hidden md:block">
+              <div className="h-full w-[80%] mx-auto relative">
+                <div className="absolute inset-y-0 left-0 w-px bg-[#9370DB]/20" />
+                <div className="absolute inset-y-0 right-0 w-px bg-[#9370DB]/20" />
               </div>
-            </main>
-            <SiteFooter />
+            </div>
+            
+            {/* Content container - full width on mobile, 80% on desktop */}
+            <div className="relative w-full md:w-[80%] mx-auto">
+              <div className="w-full px-4 md:px-0">
+                <Navbar />
+                <main className="w-full">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </div>
           </div>
           <Toaster />
         </ThemeProvider>
